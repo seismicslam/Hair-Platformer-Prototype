@@ -184,6 +184,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Player
   mWalkSpeed: 5
   mJumpForce: 5
+  hAnim: {fileID: 5607955924435546049}
+  hSr: {fileID: 1277902782301125269}
 --- !u!95 &5862416242189982402
 Animator:
   serializedVersion: 7
