@@ -18,10 +18,10 @@ public class Player : MonoBehaviour
     [SerializeField] SpriteRenderer hSr;
 
     //states (currently just used for animation but could be used for functionality)
-    bool walking = false;
-    bool flippedX = false;
-    bool grounded = false;
-    bool jumping = false;
+    bool mWalking = false;
+    bool mFlippedX = false;
+    bool mGrounded = false;
+    bool mJumping = false;
 
     private void Start()
     {
@@ -39,17 +39,17 @@ public class Player : MonoBehaviour
         //walk animation
         if (mMoveInput > 0f)
         {
-            walking = true;
-            flippedX = false;
+            mWalking = true;
+            mFlippedX = false;
         }
         else if (mMoveInput < 0f)
         {
-            walking = true;
-            flippedX = true;
+            mWalking = true;
+            mFlippedX = true;
         }
         else
         {
-            walking = false;
+            mWalking = false;
         }
 
         //jump
@@ -57,21 +57,21 @@ public class Player : MonoBehaviour
         {
             mRigidbody.AddForce(Vector2.up * mJumpForce, ForceMode2D.Impulse);
 
-            jumping = true;
-            grounded = false;
+            mJumping = true;
+            mGrounded = false;
         }
 
         //fall check
         if (mRigidbody.linearVelocityY < -0.01f)
         {
-            jumping = false;
-            grounded = false;
+            mJumping = false;
+            mGrounded = false;
         }
 
         //ground check
-        if (!grounded && !jumping && mRigidbody.linearVelocityY > -0.01f)
+        if (!mGrounded && !mJumping && mRigidbody.linearVelocityY > -0.01f)
         {
-            grounded = true;
+            mGrounded = true;
         }
 
         Animate();
@@ -80,13 +80,13 @@ public class Player : MonoBehaviour
 
     void Animate()
     {
-        pSr.flipX = flippedX;
-        pAnim.SetBool("Walking", walking);
-        pAnim.SetBool("Grounded", grounded);
-        pAnim.SetBool("Jumping", jumping);
+        pSr.flipX = mFlippedX;
+        pAnim.SetBool("Walking", mWalking);
+        pAnim.SetBool("Grounded", mGrounded);
+        pAnim.SetBool("Jumping", mJumping);
 
-        hSr.flipX = flippedX;
-        hAnim.SetBool("Grounded", grounded);
-        hAnim.SetBool("Jumping", jumping);
+        hSr.flipX = mFlippedX;
+        hAnim.SetBool("Grounded", mGrounded);
+        hAnim.SetBool("Jumping", mJumping);
     }
 }
