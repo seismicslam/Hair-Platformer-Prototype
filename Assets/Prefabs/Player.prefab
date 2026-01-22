@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 8603563503707405220}
   - component: {fileID: 8792610987524121454}
   - component: {fileID: 5862416242189982402}
+  - component: {fileID: 8235867675568884676}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -184,6 +185,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Player
   mWalkSpeed: 5
   mJumpForce: 5
+  mHair: {fileID: 889097207778932979}
   hAnim: {fileID: 5607955924435546049}
   hSr: {fileID: 1277902782301125269}
 --- !u!95 &5862416242189982402
@@ -208,6 +210,26 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!232 &8235867675568884676
+DistanceJoint2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 80449998940466294}
+  m_Enabled: 0
+  serializedVersion: 4
+  m_EnableCollision: 1
+  m_ConnectedRigidBody: {fileID: 0}
+  m_BreakForce: Infinity
+  m_BreakTorque: Infinity
+  m_BreakAction: 3
+  m_AutoConfigureConnectedAnchor: 0
+  m_Anchor: {x: 0, y: 0}
+  m_ConnectedAnchor: {x: 0, y: 0}
+  m_AutoConfigureDistance: 1
+  m_Distance: 1
+  m_MaxDistanceOnly: 0
 --- !u!1 &827965889491036087
 GameObject:
   m_ObjectHideFlags: 0
@@ -256,6 +278,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::HairController
   mParent: {fileID: 6261580600202233171}
   mHairGrapple: {fileID: 4169582031697386471}
+  mHairSprite: {fileID: 0}
+  mGrappling: 0
 --- !u!1 &4716470002482861731
 GameObject:
   m_ObjectHideFlags: 0

@@ -4,8 +4,10 @@ using UnityEngine.InputSystem;
 public class Player : MonoBehaviour
 {
     public float mWalkSpeed = 5.0f;
-    public float mJumpForce = 5.0f;
+    public float mJumpForce = 10.0f;
     float mMoveInput;
+
+    public HairController mHair;
 
     Rigidbody2D mRigidbody;
 
@@ -34,7 +36,11 @@ public class Player : MonoBehaviour
     {
         //horizontal movement
         mMoveInput = Input.GetAxis("Horizontal");
-        mRigidbody.linearVelocity = new Vector2(mMoveInput * mWalkSpeed, mRigidbody.linearVelocityY);
+        if (mHair.mGrappling) {
+            Debug.Log("Grappling.");
+            mRigidbody.AddForce((mMoveInput/5f) * Vector2.right, ForceMode2D.Impulse); 
+        }
+        else { mRigidbody.linearVelocity = new Vector2(mMoveInput * mWalkSpeed, mRigidbody.linearVelocityY); }
 
         //walk animation
         if (mMoveInput > 0f)
